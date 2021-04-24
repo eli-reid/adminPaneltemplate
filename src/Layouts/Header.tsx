@@ -131,43 +131,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                 />
               ),
             },
-            {
-              content: (
-                <Button size="Small" onClick={() => props.changeDir()}>
-                  {props.dir}
-                </Button>
-              ),
-            },
           ]}
         />
         <Actions
           size="Small"
           className="right"
           actions={[
-            {
-              content: (
-                <a
-                  className="left"
-                  href={`https://github.com/paljs/gatsby-admin-template`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="github">Support us in GitHub</span>
-                  <img src={`https://badgen.net/github/stars/paljs/gatsby-admin-template`} />
-                </a>
-              ),
-            },
-            {
-              content: (
-                <a href="https://discord.gg/NRmdvDxsT8" target="_blank" rel="noreferrer">
-                  <img height="20" src="/discord.svg" alt="slack" />
-                </a>
-              ),
-            },
-            {
-              icon: 'twitter',
-              url: { href: 'https://twitter.com/AhmedElywh', target: '_blank' },
-            },
             {
               content: (
                 <Location>

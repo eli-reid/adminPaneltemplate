@@ -11,6 +11,7 @@
     "@paljs/icons": "1.0.5",
     "@paljs/ui": "1.1.1",
     "@tinymce/tinymce-react": "3.11.0",
+    "axios": "^0.21.1",
     "gatsby": "3.1.2",
     "gatsby-image": "3.1.0",
     "gatsby-plugin-google-analytics": "^3.1.0",
@@ -42,7 +43,9 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "prepare": "husky install"
+    
   },
+  "proxy": "http://127.0.0.1:5000/",
   "repository": {
     "type": "git",
     "url": "https://github.com/paljs/gatsby-admin-template"
@@ -69,4 +72,6 @@
     "react-live": "2.2.3",
     "typescript": "4.2.3"
   }
+ 
+  
 }

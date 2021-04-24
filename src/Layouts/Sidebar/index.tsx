@@ -1,21 +1,25 @@
-import React, { useRef, useState, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef, useState, forwardRef, useImperativeHandle, useEffect } from 'react';
 import { SidebarBody, SidebarRefObject, SidebarProps, Sidebar } from '@paljs/ui/Sidebar';
 import { Menu, MenuRefObject } from '@paljs/ui/Menu';
 import { Button } from '@paljs/ui/Button';
 import { EvaIcon } from '@paljs/ui/Icon';
-import menuItems from '../menuItem';
+import { API } from '../../components/APICall';
 import { Link } from 'gatsby';
 import { Location } from '@reach/router';
+import { MenuItemType } from '@paljs/ui';
+import getMenu from '../menu';
 
 export const getPathReady = (path: string) => {
   return path.endsWith('/') ? path.slice(0, -1) : path;
 };
 
 const SidebarCustom: React.ForwardRefRenderFunction<Omit<SidebarRefObject, 'hide'>, SidebarProps> = (props, ref) => {
+  const menuCall = new API.Call('menus');
   const [menuState, setMenuState] = useState(false);
   const sidebarRef = useRef<SidebarRefObject>(null);
   const menuRef = useRef<MenuRefObject>(null);
   const [seeHeader, setSeeHeader] = useState(true);
+  const [items, setItems] = useState<MenuItemType[]>([]);
 
   useImperativeHandle(ref, () => ({
     toggle() {
@@ -26,6 +30,12 @@ const SidebarCustom: React.ForwardRefRenderFunction<Omit<SidebarRefObject, 'hide
   const getState = (state?: 'hidden' | 'visible' | 'compacted' | 'expanded') => {
     setSeeHeader(state !== 'compacted');
   };
+
+  useEffect(() => {
+    getMenu().then((menus) => {
+      setItems(menus);
+    });
+  }, []);
 
   return (
     <Sidebar getState={getState} ref={sidebarRef} property="start" containerFixed responsive className="menu-sidebar">
@@ -51,7 +61,7 @@ const SidebarCustom: React.ForwardRefRenderFunction<Omit<SidebarRefObject, 'hide
               className="sidebar-menu"
               Link={Link}
               ref={menuRef}
-              items={menuItems}
+              items={items}
               currentPath={getPathReady(location.pathname)}
               toggleSidebar={() => sidebarRef.current?.hide()}
             />
