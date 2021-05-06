@@ -6,7 +6,7 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 const Container = styled.div`
   display: flex;

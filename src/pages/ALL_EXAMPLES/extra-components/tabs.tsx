@@ -3,7 +3,7 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import { Card } from '@paljs/ui/Card';
 import React from 'react';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 const TabPage = () => {
   return (

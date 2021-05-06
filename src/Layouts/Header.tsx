@@ -4,13 +4,16 @@ import styled, { DefaultTheme } from 'styled-components';
 import Select from '@paljs/ui/Select';
 import { LayoutHeader } from '@paljs/ui/Layout';
 import { EvaIcon } from '@paljs/ui/Icon';
-import { Button } from '@paljs/ui/Button';
 import { Actions } from '@paljs/ui/Actions';
 import ContextMenu from '@paljs/ui/ContextMenu';
 import User from '@paljs/ui/User';
 import { getPathReady } from './Sidebar';
 import { Location } from '@reach/router';
 import { breakpointDown } from '@paljs/ui/breakpoints';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import getThemes, { theme } from './themesOptions';
+import { EvaIconOptions, Icon } from '@paljs/icons';
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -57,49 +60,29 @@ interface HeaderProps {
     value: DefaultTheme['name'];
   };
   changeDir: () => void;
-  dir: 'rtl' | 'ltr';
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const themeOptions = [
-    {
-      value: 'default',
-      label: (
-        <Label>
-          <EvaIcon name="droplet" options={{ fill: '#a6c1ff' }} />
-          Default
-        </Label>
-      ),
-    },
-    {
-      value: 'dark',
-      label: (
-        <Label>
-          <EvaIcon name="droplet" options={{ fill: '#192038' }} />
-          Dark
-        </Label>
-      ),
-    },
-    {
-      value: 'cosmic',
-      label: (
-        <Label>
-          <EvaIcon name="droplet" options={{ fill: '#5a37b8' }} />
-          Cosmic
-        </Label>
-      ),
-    },
-    {
-      value: 'corporate',
-      label: (
-        <Label>
-          <EvaIcon name="droplet" options={{ fill: '#3366ff' }} />
-          Corporate
-        </Label>
-      ),
-      selected: true,
-    },
-  ];
+  const [themeOptions, setThemeOptions] = useState<theme[]>([]);
+  useEffect(() => {
+    getThemes().then((themes: theme[]) => {
+      themes.forEach(function (item) {
+        let label = (
+          <Label>
+            <EvaIcon
+              name={item.jsonLabel.icon.name as keyof Icon}
+              options={item.jsonLabel.icon.options as EvaIconOptions}
+            />
+            {item.jsonLabel.value}
+          </Label>
+        );
+        item.label = label;
+      });
+      console.log(themes[1].label);
+      setThemeOptions(themes);
+    });
+  }, []);
+
   return (
     <LayoutHeader fixed>
       <HeaderStyle>
@@ -115,7 +98,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             {
               content: (
                 <Link to="/" className="logo">
-                  Admin Template
+                  Python Multitask Admin Panel
                 </Link>
               ),
             },
@@ -151,7 +134,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                       ]}
                       Link={Link}
                     >
-                      <User image="url('/icons/icon-72x72.png')" name="Ahmed Elywa" title="Manger" size="Medium" />
+                      <User image="url('/icons/icon-72x72.png')" name="Root" title="Manger" size="Medium" />
                     </ContextMenu>
                   )}
                 </Location>

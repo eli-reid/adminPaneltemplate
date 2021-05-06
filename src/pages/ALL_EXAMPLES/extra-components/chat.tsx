@@ -4,8 +4,8 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React, { useState } from 'react';
 
-import SEO from '../../components/SEO';
-import defaultMessages from '../../components/messages';
+import SEO from '../../../components/SEO';
+import defaultMessages from '../../../components/messages';
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<MessageProps[]>(defaultMessages);

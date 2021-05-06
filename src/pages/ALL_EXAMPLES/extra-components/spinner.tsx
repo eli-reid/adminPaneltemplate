@@ -5,7 +5,7 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import { Card, CardBody } from '@paljs/ui/Card';
 import React, { useState } from 'react';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 const SpinnerPage = () => {
   const [show, setShow] = useState(false);

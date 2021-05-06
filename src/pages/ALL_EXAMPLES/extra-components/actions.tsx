@@ -4,9 +4,11 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React from 'react';
 import { Link } from 'gatsby';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
-const ActionsPage = () => {
+const ActionsPage = (props) => {
+  console.log(props);
+  console.log(location.h);
   const items: ActionType[] = [
     {
       icon: 'home',

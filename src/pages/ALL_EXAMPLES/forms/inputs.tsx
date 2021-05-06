@@ -7,7 +7,7 @@ import Col from '@paljs/ui/Col';
 import Row from '@paljs/ui/Row';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },

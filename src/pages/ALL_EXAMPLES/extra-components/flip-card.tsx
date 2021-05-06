@@ -3,7 +3,7 @@ import FlipCard from '@paljs/ui/FlipCard';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React from 'react';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 export default function FlipCards() {
   return (

@@ -8,7 +8,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import { Button } from '@paljs/ui/Button';
 import { Link } from 'gatsby';
 
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 export default function PopoverPage() {
   return (
@@ -111,6 +111,7 @@ export default function PopoverPage() {
               <ContextMenu
                 className="with-margin inline-block"
                 placement="bottom"
+                currentPath="/"
                 items={[
                   { title: 'Profile', link: { to: '/modal-overlays/tooltip' } },
                   { title: 'Log out', link: { to: '/logout' } },
